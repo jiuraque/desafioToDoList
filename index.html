@@ -26,7 +26,7 @@
     <div class="container bg-white p-4 rounded shadow-lg w-50">
         
         
-        <div class="d-flex justify-content-center align-items-center gap-2 mb-3">
+        <div id="campo-tareas" class="d-flex justify-content-center align-items-center gap-2 mb-3">
             <label for="nombreTarea" class="fw-bold">Nueva Tarea:</label>
             <input type="text" id="nombreTarea" class="form-control w-50">
             <button class="btn btn-success">Agregar</button>
@@ -35,16 +35,16 @@
         
         <div class="row">
             
-            <div class="col-md-6 text-start">
+            <div id="resumen-tareas" class="col-md-6 text-start">
                 <p>Total: <span>0</span></p>
                 <p>Realizadas: <span>0</span></p>
             </div>
 
           
-            <div class="col-md-6">
+            <div id="lista-tareas" class="col-md-6">
                 <div class="d-flex justify-content-between pb-2">
-                    <strong>ID</strong>
-                    <strong>Tarea</strong>
+                    <p><strong>ID</strong></p>
+                    <p><strong>Tarea</strong></p>
                 </div>
             </div>
         </div>
