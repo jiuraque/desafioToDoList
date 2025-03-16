@@ -14,7 +14,9 @@ const taskID = document.getElementById("taskIds");
 const taskName = document.getElementById("taskNames");
 const taskAction = document.getElementById("taskActions");
 
-taskBtn.addEventListener("click", () => {
+document.addEventListener("DOMContentLoaded", updateTaskList);
+
+taskBtn.addEventListener("click",  () => {
     const newTask = taskInput.value.trim();  
 
     if (newTask === "") {
@@ -29,6 +31,13 @@ taskBtn.addEventListener("click", () => {
     taskInput.value = "";
 
     updateTaskList();
+});
+
+taskInput.addEventListener("keydown", (event) => {
+    if(event.key === "Enter") {
+        event.preventDefault();
+        taskBtn.click();
+    }
 });
 
 function updateTaskList() {
@@ -67,6 +76,7 @@ function updateTaskList() {
 
         deleteButton.addEventListener("click", () => {
             deleteTask(task.id);
+            task.completed ? taskCheckbox.checked : alert("Esta tarea no está completada, ¿estás seguro que quieres eliminarla?");
             
         });
        
@@ -90,7 +100,7 @@ function updateCounters(total, completed) {
 function deleteTask(taskId) {
     
     task = task.filter(t => t.id !== taskId);
-    task.completed ? taskCheckbox.checked : alert("Esta tarea no está completada, ¿estás seguro que quieres eliminarla?");
    
     updateTaskList();
 }
+

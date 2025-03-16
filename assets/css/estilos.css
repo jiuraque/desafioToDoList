@@ -97,9 +97,12 @@ ul {
 }
 
 #taskIds li,
-#taskNames li,
-#taskActions li {
+#taskNames li {
     padding: 5px;
+}
+
+#taskActions li {
+    padding: 1px;
 }
 
 #taskActions button {
