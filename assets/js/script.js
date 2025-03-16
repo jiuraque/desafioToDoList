@@ -49,6 +49,8 @@ function updateTaskList() {
     let totalTasks = task.length;
     let completedTasks = task.filter(task => task.completed).length;
 
+    console.log(updateTaskList);
+
     task.forEach(task => {
         
         const taskIdElement = document.createElement("li");
@@ -67,6 +69,8 @@ function updateTaskList() {
             task.completed = taskCheckbox.checked;  
 
             updateTaskList();  
+
+            console.log(task);
         });
         
         const deleteButton = document.createElement("button");
@@ -91,10 +95,13 @@ function updateTaskList() {
     updateCounters(totalTasks, completedTasks);
 }
 
+
 function updateCounters(total, completed) {
    
     taskTotal.textContent = total;
     taskComplete.textContent = completed;
+
+    console.log(updateCounters);
 }
 
 function deleteTask(taskId) {
@@ -102,5 +109,7 @@ function deleteTask(taskId) {
     task = task.filter(t => t.id !== taskId);
    
     updateTaskList();
+
+    console.log(deleteTask);
 }
 
