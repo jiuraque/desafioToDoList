@@ -1,27 +1,11 @@
-const TAREA = {
-    id: Number,
-    tarea: String,
-    check: Boolean,
-}
-let contador = 0;
-function aumentarContador(){
-    contador++;
-    TAREA.id = contador;
-}
+let task = [];
+let addID = 0;
 
-const tareaIngresada = document.getElementById("tareaCampo");
-
-tareaIngresada.addEventListener("submit", (e) =>{
-    e.preventDefault();
-
-    const tareaInput = document.getElementById("tareaInput");
-    aumentarContador();
-    TAREA.tarea = tareaInput.value;
-    TAREA.check = false;
-
-    console.log(TAREA);
-
-    
-
-});
+const taskInput = document.getElementById("taskInput");
+const taskBtn = document.getElementById("addTaskBtn");
+const taskTotal = document.getElementById("totalTasks");
+const taskComplete = document.getElementById("completedTasks");
+const taskID = document.getElementById("taskIds");
+const taskName = document.getElementById("taskNames");
+const taskAction = document.getElementById("taskActions");
 

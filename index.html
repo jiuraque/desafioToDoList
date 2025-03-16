@@ -6,12 +6,6 @@
     <title>To Do List App</title>
     <link rel="stylesheet" href="./assets/css/estilos.css" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
       integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -19,52 +13,53 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body
-    class="d-flex flex-column align-items-center justify-content-center vh-100 bg-light"
-  >
-    <h1 class="text-center mb-4">TO DO LIST</h1>
+  <body>
+    <div class="container">
+    
+      <h1 class="title">TO-DO LIST</h1>
 
-    <div class="container bg-white p-4 rounded shadow-lg w-50">
-      <form
-        id="tareaCampo"
-        class="d-flex justify-content-center align-items-center gap-2 mb-3"
-      >
-        <label for="nombreTarea" class="fw-bold">Nueva Tarea:</label>
-        <input
-          type="text"
-          id="tareaInput"
-          placeholder="añade tu tarea"
-          class="form-control w-50"
-        />
-        <button type="submit" class="btn btn-success">Agregar</button>
-    </form>
-
-      <div class="row">
-        <div id="tareaResumen" class="col-md-6 text-start">
-          <p>Total: <span id="totalTareas">0</span></p>
-          <p>Realizadas: <span id="tareasRealizadas">0</span></p>
+      
+      <div class="input-container">
+        <input type="text" id="taskInput" placeholder="Nueva tarea" />
+        <button id="addTaskBtn">Agregar</button>
+      </div>
+  
+      
+      <div class="task-counts">
+        <div>
+          <p><strong>Total:</strong> <span id="totalTasks">0</span></p>
         </div>
+        <div>
+          <p><strong>Realizadas:</strong> <span id="completedTasks">0</span></p>
+        </div>
+      </div>
 
-        <div id="tareaLista" class="col-md-6">
-          <div class="d-flex justify-content-between pb-2">
-            <p class="fw-bold">ID</p>
-            <p class="fw-bold">Tareas</p>
-            <p class="fw-bold">Acciones</p>
-          </div>
-
-          <ul id="listaTareas" class="list-group mt-2">
-
+      <hr class="solid">
+      
+      <div class="task-section">
+        <div class="task-column">
+          <h3>ID</h3>
+          <ul id="taskIds">
+            
+          </ul>
+        </div>
+        <div class="task-column">
+          <h3>Tarea</h3>
+          <ul id="taskNames">
+            
+          </ul>
+        </div>
+        <div class="task-column">
+          <h3>Acciones</h3>
+          <ul id="taskActions">
+            
           </ul>
         </div>
       </div>
+  
     </div>
 
     <script src="./assets/js/script.js"></script>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
