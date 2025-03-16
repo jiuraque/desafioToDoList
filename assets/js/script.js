@@ -1,7 +1,7 @@
 let task = [
-    {id: 1, name: "Peinar a Wanda", check: false},
-    {id: 2, name: "Hacer el Almuerzo", check: false},
-    {id: 3, name: "Estudiar JavaScript", check: false},
+  { id: 1, name: "Peinar a Wanda", check: false },
+  { id: 2, name: "Hacer el Almuerzo", check: false },
+  { id: 3, name: "Estudiar JavaScript", check: false },
 ];
 
 let addID = task.length;
@@ -16,100 +16,89 @@ const taskAction = document.getElementById("taskActions");
 
 document.addEventListener("DOMContentLoaded", updateTaskList);
 
-taskBtn.addEventListener("click",  () => {
-    const newTask = taskInput.value.trim();  
+taskBtn.addEventListener("click", () => {
+  const newTask = taskInput.value.trim();
 
-    if (newTask === "") {
-        alert("Por favor, ingresa una tarea.");
-        return;
-    }
+  if (newTask === "") {
+    alert("Por favor, ingresa una tarea.");
+    return;
+  }
 
-    addID++;
- 
-    task.push({ id: addID, name: newTask, completed: false });
- 
-    taskInput.value = "";
+  addID++;
 
-    updateTaskList();
+  task.push({ id: addID, name: newTask, completed: false });
+
+  taskInput.value = "";
+
+  updateTaskList();
 });
 
 taskInput.addEventListener("keydown", (event) => {
-    if(event.key === "Enter") {
-        event.preventDefault();
-        taskBtn.click();
-    }
+  if (event.key === "Enter") {
+    event.preventDefault();
+    taskBtn.click();
+  }
 });
 
 function updateTaskList() {
-    
-    taskID.innerHTML = "";
-    taskName.innerHTML = "";
-    taskAction.innerHTML = "";
-    
-    let totalTasks = task.length;
-    let completedTasks = task.filter(task => task.completed).length;
+  taskID.innerHTML = "";
+  taskName.innerHTML = "";
+  taskAction.innerHTML = "";
 
-    console.log(updateTaskList);
+  let totalTasks = task.length;
+  let completedTasks = task.filter((task) => task.completed).length;
 
-    task.forEach(task => {
-        
-        const taskIdElement = document.createElement("li");
-        taskIdElement.textContent = task.id;
-       
-        const taskNameElement = document.createElement("li");
-        taskNameElement.textContent = task.name;
-      
-        const taskActionElement = document.createElement("li");
-              
-        const taskCheckbox = document.createElement("input");
+  task.forEach((task) => {
+    const taskIdElement = document.createElement("li");
+    taskIdElement.textContent = task.id;
 
-        taskCheckbox.type = "checkbox";
-        taskCheckbox.checked = task.completed; 
-        taskCheckbox.addEventListener("change", () => {
-            task.completed = taskCheckbox.checked;  
+    const taskNameElement = document.createElement("li");
+    taskNameElement.textContent = task.name;
 
-            updateTaskList();  
+    const taskActionElement = document.createElement("li");
 
-            console.log(task);
-        });
-        
-        const deleteButton = document.createElement("button");
-        const deleteIcon = document.createElement("i");
-        deleteIcon.classList.add("fas", "fa-xmark");  
-        deleteButton.appendChild(deleteIcon);
+    const taskCheckbox = document.createElement("input");
 
-        deleteButton.addEventListener("click", () => {
-            deleteTask(task.id);
-            task.completed ? taskCheckbox.checked : alert("Esta tarea no está completada, ¿estás seguro que quieres eliminarla?");
-            
-        });
-       
-        taskActionElement.appendChild(taskCheckbox);
-        taskActionElement.appendChild(deleteButton);
-       
-        taskID.appendChild(taskIdElement);
-        taskName.appendChild(taskNameElement);
-        taskAction.appendChild(taskActionElement);
+    taskCheckbox.type = "checkbox";
+    taskCheckbox.checked = task.completed;
+    taskCheckbox.addEventListener("change", () => {
+      task.completed = taskCheckbox.checked;
+
+      updateTaskList();
     });
- 
-    updateCounters(totalTasks, completedTasks);
+
+    const deleteButton = document.createElement("button");
+    const deleteIcon = document.createElement("i");
+    deleteIcon.classList.add("fas", "fa-xmark");
+    deleteButton.appendChild(deleteIcon);
+
+    deleteButton.addEventListener("click", () => {
+      deleteTask(task.id);
+      task.completed
+        ? taskCheckbox.checked
+        : alert(
+            "Esta tarea no está completada, ¿estás seguro que quieres eliminarla?"
+          );
+    });
+
+    taskActionElement.appendChild(taskCheckbox);
+    taskActionElement.appendChild(deleteButton);
+
+    taskID.appendChild(taskIdElement);
+    taskName.appendChild(taskNameElement);
+    taskAction.appendChild(taskActionElement);
+  });
+
+  updateCounters(totalTasks, completedTasks);
 }
 
-
 function updateCounters(total, completed) {
-   
-    taskTotal.textContent = total;
-    taskComplete.textContent = completed;
-
-    console.log(updateCounters);
+  taskTotal.textContent = total;
+  taskComplete.textContent = completed;
 }
 
 function deleteTask(taskId) {
-    
-    task = task.filter(t => t.id !== taskId);
-   
-    updateTaskList();
+  task = task.filter((t) => t.id !== taskId);
 
-    console.log(deleteTask);
+  updateTaskList();
 }
-
